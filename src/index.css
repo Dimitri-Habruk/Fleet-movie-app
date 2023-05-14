@@ -1,0 +1,9 @@
+body {
+  font-family: 'Playfair Display', serif;
+  background-color: rgb(55, 53, 53);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
