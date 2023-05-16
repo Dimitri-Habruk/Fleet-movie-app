@@ -18,7 +18,6 @@ export const MovieController = (props)=>{
     const [bgImg, setBgImg] = useState(true)
 
 
-
     return (
         <MovieContext.Provider 
         value={{
