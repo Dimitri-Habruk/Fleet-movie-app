@@ -1,31 +1,32 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { MovieContext } from "../context/MovieContext";
 
 export const MovieList = () => {
-  // const { value } = useContext(MovieContext);
-  // const [movies, setMovies] = useState([]);
-  const { movies, setMovies, setMovieId } = useContext(MovieContext);
+  const { movies, setMovies, setMovieId, setBgImg } = useContext(MovieContext);
 
-  const setMovie =(movieId)=>{
-    setMovieId(movieId)
-  }
+  const setMovie = (movieId) => {
+    setMovieId(movieId);
+  };
 
   useEffect(() => {
     setMovies(movies);
-    console.log(movies);
+    movies && movies.length > 0 && setBgImg(false);
   }, [movies]);
 
-
   return (
-    <div style={{ height: "80vh", overflowY:'scroll' ,border: "1px solid blue", margin: "auto" }}>
-      {!movies || movies.length === 0 ? <h2>list is empty</h2> : null}
-  
+    <div
+      style={{
+        height: "80vh",
+        margin: "auto",
+        overflowY: movies && movies.length > 0 ? "auto" : "initial",
+      }}
+    >
       {movies && movies.length > 0 && (
-        <table style={{ width: "90%", borderCollapse: "collapse", margin: "auto",
-       }}>
+        <table
+          style={{ width: "90%", borderCollapse: "collapse", margin: "auto" }}
+        >
           <tbody>
             {movies.map((e) => (
-              
               <tr key={e.id}>
                 <td style={{ borderBottom: "1px solid black" }}>{e.title}</td>
                 <td style={{ borderBottom: "1px solid black" }}>
@@ -41,9 +42,11 @@ export const MovieList = () => {
                     />
                   )}
                 </td>
-                <td style={{ borderBottom: "1px solid black" }}>{e.release_year}</td>
                 <td style={{ borderBottom: "1px solid black" }}>
-                  <button onClick={()=>setMovie(e.id)}>View</button>
+                  {e.release_year}
+                </td>
+                <td style={{ borderBottom: "1px solid black" }}>
+                  <button onClick={() => setMovie(e.id)}>View</button>
                 </td>
               </tr>
             ))}
@@ -52,6 +55,4 @@ export const MovieList = () => {
       )}
     </div>
   );
-  
-
 };

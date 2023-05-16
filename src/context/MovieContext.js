@@ -15,6 +15,8 @@ export const MovieController = (props)=>{
     const [movies, setMovies] = useState(null)
     const [emptyList, setEmptyList] = useState(false)
     const [movieId, setMovieId] = useState('')
+    const [bgImg, setBgImg] = useState(true)
+
 
 
     return (
@@ -25,7 +27,8 @@ export const MovieController = (props)=>{
             emptyList,
             setEmptyList,
             movieId,
-            setMovieId:(newMovieId) => setMovieId(newMovieId)
+            setMovieId:(newMovieId) => setMovieId(newMovieId),
+            bgImg, setBgImg
             }}
         >
         {props.children}

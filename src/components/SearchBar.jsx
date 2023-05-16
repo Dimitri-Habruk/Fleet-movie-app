@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { MovieContext } from "../context/MovieContext";
 import axios from "axios";
 export const SearchBar = () => {
-  const { movies, setMovies } = useContext(MovieContext);
-  // const [movies, setMovies] = useState(value);
-  // const [emptyList, setEmptyList] = useState(false)
-  // const { emptyList, setEmptyList } = useContext(MovieContext);
+  const { setMovies } = useContext(MovieContext);
+  
   const [searchTerm, setSearchTerm] = useState("");
 
   const fetchMovies = async () => {
@@ -28,16 +26,14 @@ export const SearchBar = () => {
     setSearchTerm(e.target.value);
   };
   return (
-    <div style={{ height: "12vh", backgroundColor: "lightblue" }}>
-      <h1 style={{ fontSize: "1em" }}>Search for a movie by title.</h1>
-      <div className="inputAndButton" style={{ display: "flex" }}>
-        <input
-          style={{ width: "80%", margin: "auto" }}
-          placeholder="Search by name"
-          type="text"
-          onChange={handleSearch}
-        />
-      </div>
+    <div style={{ display: "flex", backgroundColor: "#ff4352" }}>
+      <h1 style={{ marginLeft: "auto" }}>Movie App</h1>
+      <input
+        style={{ width: "70%", padding: "7px", margin: "auto" }}
+        placeholder="Search for a movie by title"
+        type="text"
+        onChange={handleSearch}
+      />
     </div>
   );
 };
